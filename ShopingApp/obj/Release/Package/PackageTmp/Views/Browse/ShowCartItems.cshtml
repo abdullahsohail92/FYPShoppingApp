@@ -1,0 +1,62 @@
+﻿@model ShopingApp.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCartItems";
+}
+
+
+<h2>Cart Items</h2>
+
+
+
+<table class="table table-hover table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Amount</th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderDetails)
+            {
+            <tr>
+                <td><img src="@item.Product.ProductImageUrl" height="50" width="50" /></td>
+                <td>@item.Product.ProductName</td>
+                <td>@item.UnitPrice</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Quantity * @item.UnitPrice)</td>
+                <td><a href="@Url.Action("RemoveProduct", "Browse", new {id = item.ProductId})" class="text-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+        }
+        <tr>
+            <td colspan="2">Total</td>
+            <td>@Model.Count</td>
+            <td>@Model.Amount</td>
+        </tr>
+    </tbody>
+</table>
+@if (Model.Count > 0)
+{
+    <div style="margin-top:50px;float:right;">
+        @Html.ActionLink("Check out", "Checkout", "Browse", new { @class = "jumbotron" })
+        <span class="glyphicon glyphicon-shopping-cart">
+        </span>
+        <form method="post" action="https://secure.payza.com/checkout">
+            <input type="hidden" name="ap_productid" value="iIMglh1lkGNQtiUQ+ZH+8g==" />
+            <input type="hidden" name="ap_quantity" value="1" />
+            <input type="image" name="ap_image" src="https://secure.payza.com/PayNow/5959C8AEE08445BDB88203899666476Eb0en.gif" />
+            <input type="hidden" name="ap_inpage" value="1" />
+        </form>
+
+        <script src="https://secure.payza.com/JS/PayzaCheckout.js"></script>
+    </div>
+
+
+
+
+}

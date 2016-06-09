@@ -1,0 +1,44 @@
+﻿@model List<ShopingApp.Models.Category>
+@{
+    ViewBag.Title = "TopCategories";
+}
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        @*<div>
+           @item.CategoryName 
+            
+        </div>*@
+
+
+        foreach (var i in item.Products)
+        {
+            <div class="col-md-4">
+                <div>
+                    <div class="panel-heading"  style="opacity:.8;">
+
+                        <a style="background-color: goldenrod;" href="@Url.Action("Feature", "Browse", new {id = item.Id})" class="btn btn-success ">
+                            Product : @i.ProductName
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="@Url.Action("Feature", "Browse", new {id = item.Id})">
+                            <img src="@i.ProductImageUrl" alt="@i.ProductName" class="img-size img-circle zoom-tilt" />
+                        </a>
+
+                    </div>
+                    <div class="panel-footer"  style="opacity:.9;">
+                        <text class="panelfont">
+                            Price : Rs @i.ProductPrice</text>
+                            <a href="@Url.Action("AddToCart", "Browse", new {id = item.Id})" class="btn btn-success grow">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                            </a>
+</div>
+                </div>
+            </div>
+      
+        }
+ }
+</div>

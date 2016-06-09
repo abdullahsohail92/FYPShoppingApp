@@ -1,0 +1,31 @@
+﻿@model ShopingApp.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+@{ 
+    Layout = "~/Views/Shared/_AdminLogin.cshtml";
+
+}
+<h4 class="text text-warning">Use Social Networks to log in.</h4>
+<hr />
+@{
+     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                There is Currently No External Authentication Available
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div id="socialLoginList">
+                <p class="text text-primary">
+                    @foreach (AuthenticationDescription p in loginProviders) {
+                      <div>  <button  type="submit" class="btn btn-primary" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">
+                            <h4>@p.AuthenticationType login</h4></button></div><br />
+                    }
+                </p>
+            </div>
+        }
+    }
+}

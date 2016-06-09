@@ -1,0 +1,74 @@
+﻿body {
+    
+    background-image: url('../images/bg5.jpg');
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.img-size {
+            width: 175px;
+            height: 175px;
+        }
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../images/loading.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+.loadajax{
+    background-color:black;
+    position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('../images/please_wait.gif') 50% 50% no-repeat rgb(249,249,249);
+}
+.someclass {
+   /*background-color:black;*/
+  
+   font: bold 25px "Century Schoolbook", Georgia, Times, serif;
+	color: #333;
+	line-height: 90%;
+	margin: .2em 0 .4em 0;
+	letter-spacing: -2px;
+    text-decoration:none;
+    
+}
+
+.panelfont{
+    font: bold 18px "Century Schoolbook", Georgia, Times, serif;
+}
+.custom-rotate {
+     transition:1s;
+    perspective:1100px;
+}
+.custom-rotate:hover{
+   
+   transform:rotateY(30deg);
+}
+.hi{
+    border-top-left-radius:20px;
+}

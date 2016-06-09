@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "shugal";
+}
+
+<h2>shugal</h2>
+
+
+    @*<link href="Content/animate.css" rel="stylesheet" />
+    <link href="Content/toastr.css" rel="stylesheet" />*@
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+
+    <h1>Add New</h1>
+    <input type="text" id="todo" placeholder="Enter value" />
+    <button id="btnAdd">Add</button>
+
+    <br />
+    <h1 id="count">List of ToDo Things</h1>
+    <ol>
+        <li>Java</li>
+    </ol>
+
+
+       
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+    <script>
+    $('#btnAdd').on('click', function() {
+        var value = $('#todo').val();
+
+        if (value.length == 0) {
+            //alert('Please enter value');
+            toastr.error('Please enter value');
+            return;
+        }
+
+        $('#todo').val('');
+
+        $('ol').append('<li class="animated fadeIn">' + value + '</li>');
+
+        toastr.success('Value added successfully');
+
+        countTodoList();
+    });
+
+    function countTodoList() {
+        var count = $('li').length;
+        $('#count').text("Total Todo list : " + count);
+    }
+
+    </script>
+

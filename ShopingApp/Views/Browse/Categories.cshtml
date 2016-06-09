@@ -1,0 +1,31 @@
+﻿@model List<ShopingApp.Models.Category>
+<script type="text/javascript" language="javascript">
+    function clearResult() {
+        $("#updateArea").empty();
+    }
+</script>
+@foreach (var item in Model)
+{
+    <div class="table">
+        <div class="category someclass">
+            @Ajax.ActionLink(item.CategoryName, "ByCategory", "Browse", new { id = item.Id }, new AjaxOptions()
+       {
+           UpdateTargetId = "updateArea",
+           HttpMethod = "Get",
+           InsertionMode = InsertionMode.Replace,
+           OnBegin = "clearResult",
+           LoadingElementId = "main",
+           LoadingElementDuration = 1500
+
+
+
+       }, new { @class = "someclass grow" })
+            <span class="badge">@item.Products.Count</span>
+        </div>
+
+        @*<a style="color: slategray;" class="text-warning" href="@Url.Action("ByCategory", "Browse", new {id = item.Id})">
+                @item.CategoryName
+            </a>
+            <span class="badge ">@item.Products.Count</span>*@
+    </div><hr />
+}

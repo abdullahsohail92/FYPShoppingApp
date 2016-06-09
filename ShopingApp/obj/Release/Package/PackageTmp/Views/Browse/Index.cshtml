@@ -1,0 +1,30 @@
+﻿@model List<ShopingApp.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+<script type="text/javascript" language="javascript">
+    function clearResult() {
+        $("#search").empty();
+    }
+</script>
+@using (Ajax.BeginForm("Search", "Browse", new AjaxOptions()
+{
+    HttpMethod = "Get",
+    UpdateTargetId = "search",
+    InsertionMode = InsertionMode.Replace,
+    LoadingElementId = "searchload",
+    OnBegin = "clearResult",
+    LoadingElementDuration = 1500
+}))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <input id="textbox" class="form-control" type="text" name="name" placeholder="Enter your desired product name" />
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-danger grow" type="submit">Search</button>
+        </div>
+    </div><hr />
+}
+<div id="searchload" style="display:none; color: green;"><h4>Please wait</h4></div>
+<div id="search">@{ Html.RenderPartial("_ViewProducts", Model); }</div>

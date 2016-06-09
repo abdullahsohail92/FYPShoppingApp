@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="ShopingContext-Web.config Connection String" description="ShopingContext Connection String used in web.config by the application to access the database." defaultValue="Server=44cc6874-d33a-48b3-8a50-a59200fb9198.sqlserver.sequelizer.com;Database=db44cc6874d33a48b38a50a59200fb9198;User ID=jobnunazhacbmerz;Password=SWegTiSrZWQYzWkRrUdFu2pncivhpbQ68W8HfEppYUNbYjECXwUQfiKYFZeJVJbY;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\sohai\\Documents\\Visual\ Studio\ 2015\\Projects\\ShopingApp\\ShopingApp\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ShopingContext']/@connectionString" />
+  </parameter>
+</parameters>

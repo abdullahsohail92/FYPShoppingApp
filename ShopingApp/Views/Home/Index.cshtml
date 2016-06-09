@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <h1>@Html.ActionLink("Nevigate to Admin Page", "Login", "Admin", new { area = "" }, new { @class = "navbar-brand" })</h1>
+}
+<h1 >@Html.ActionLink("Nevigate to Home Page", "Index", "Browse", new {area = ""}, new {@class = "navbar-brand"})</h1>

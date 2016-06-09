@@ -1,0 +1,36 @@
+﻿@model List<ShopingApp.Models.Product>
+
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div>
+                    <div class="panel-heading" style="opacity:.8;">
+
+                        <a style="background-color: sandybrown;" href="@Url.Action("Feature", "Browse", new {id = item.Id})" class="btn btn-success ">
+                            Product : @item.ProductName
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <a href="@Url.Action("Feature", "Browse", new {id = item.Id})">
+                            <img  src="@item.ProductImageUrl" alt="@item.ProductName" class="img-size img-circle rotate" />
+                        </a>
+
+                    </div>
+                    <div class="panel-footer">
+                       <text class="panelfont">Price : Rs @item.ProductPrice</text> 
+                        <a href="@Url.Action("AddToCart", "Browse", new {id = item.Id})" class="btn btn-success grow">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+<hr/>
+<img class="wobble" src="~/images/25.jpg" />
+<h2>Trending Now</h2>
+@{ Html.RenderAction("TopCategories", "Browse"); }

@@ -1,0 +1,69 @@
+﻿
+
+@using ShopingApp.Models
+@model List<ShopingApp.Models.Feature>
+@{
+    ViewBag.Title = "Features";
+}
+
+<h2>@ViewBag.ProductId</h2>
+<h2 class="alert alert-success">Product Features</h2>
+
+
+
+
+        <table class="table table-hover table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Product Id</th>
+                    <th>Feature Name</th>
+                    <th>Feature Detail</th>
+                    <th>Image</th>
+                    <th>Price</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+
+                        <td>@item.ProductId</td>
+                        <td>@item.FeatureName</td>
+                        <td>@item.FeatureDetail</td>
+
+                        @*<td><img src="@item.ProductId" height="50" width="50"/></td>
+                            <td>@item.Product.ProductPrice</td>*@
+                    </tr>
+
+
+
+
+                }
+
+            </tbody>
+        </table>
+    
+   
+
+
+
+
+
+
+
+@foreach (var item in Model)
+{
+
+
+    <div class="panel-footer">
+
+        <a href="@Url.Action("AddToCart", "Browse", new {id = item.Id})" class="btn btn-primary">
+       Add to Cart<span class="glyphicon glyphicon-shopping-cart"></span>
+        </a>
+    </div>
+}
