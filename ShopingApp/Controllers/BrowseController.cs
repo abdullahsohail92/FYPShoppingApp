@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ShopingApp.Models;
 
@@ -72,8 +70,7 @@ namespace ShopingApp.Controllers
             var list = db.Products.Where(x => x.CategoryId == id).ToList();
 
             return PartialView(list);
-            //return View(list);
-        }
+         }
 
         public ActionResult Feature(int? id)
         {

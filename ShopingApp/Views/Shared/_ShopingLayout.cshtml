@@ -16,11 +16,9 @@
             width: 175px;
             height: 175px;
         }
-
-        }
     </style>
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
-   
+
 
 
 </head>
@@ -46,7 +44,7 @@
                     <li class="item"><a href="@Url.Action("Index", "Browse")">Home</a></li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                   
+
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li class="dropdown">

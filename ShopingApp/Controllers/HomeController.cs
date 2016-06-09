@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ShopingApp.Models;
 
 namespace ShopingApp.Controllers
@@ -12,10 +8,11 @@ namespace ShopingApp.Controllers
         ShopingContext db = new ShopingContext();
         public ActionResult Index()
         {
-            var list = db.Products
-                           .OrderByDescending(x => x.ProductRank)
-                           .Take(10)
-                           .ToList();
+            //var list = db.Products
+            //               .OrderByDescending(x => x.ProductRank)
+            //               .Take(1)
+            //               .ToList();
+            //return View(list);
             return View();
         }
 
