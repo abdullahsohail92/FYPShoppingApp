@@ -1,8 +1,8 @@
-﻿body {
+﻿/*body {
     
     background-image: url('../images/bg5.jpg');
     
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -71,4 +71,7 @@ textarea {
 }
 .hi{
     border-top-left-radius:20px;
+}
+.colorcl {
+    color:green !important;
 }

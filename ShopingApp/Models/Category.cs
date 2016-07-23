@@ -64,6 +64,7 @@ namespace ShopingApp.Models
         public DbSet<Feature> Features { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Activity> Activities { get; set; }
         
     }
 }

@@ -152,3 +152,4 @@ E:\Abdullah's Data\study material\UNIVERSITY\FYP\GitProjectFull\ShopingApp\obj\D
 E:\Abdullah's Data\study material\UNIVERSITY\FYP\GitProjectFull\ShopingApp\obj\Debug\ShopingApp.csproj.GenerateResource.Cache
 E:\Abdullah's Data\study material\UNIVERSITY\FYP\GitProjectFull\ShopingApp\obj\Debug\ShopingApp.dll
 E:\Abdullah's Data\study material\UNIVERSITY\FYP\GitProjectFull\ShopingApp\obj\Debug\ShopingApp.pdb
+E:\Abdullah's Data\study material\UNIVERSITY\FYP\GitProjectFull\ShopingApp\obj\Debug\ShopingApp.Migrations.bbb.resources

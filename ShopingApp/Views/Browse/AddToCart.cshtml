@@ -2,6 +2,18 @@
     ViewBag.Title = "AddToCart";
 }
 
-<h2>Add To Cart</h2>
+@*<h2>Add To Cart</h2>*@
 @*<h2>@ViewBag.ProductId</h2>*@
-<h2 class="alert alert-success">Product is added to Cart</h2>
+<h2 class="alert alert-success">
+    Product is added to Cart
+    <span style="float: right;">
+        <a href="@Url.Action("ShowCartItems", "Browse")">
+            Cart
+            <span class="badge">
+                @{
+                    Html.RenderAction("CartCountProduct", "Browse");
+                }
+            </span>
+        </a>
+    </span>
+</h2>

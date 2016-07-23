@@ -1,0 +1,121 @@
+﻿@model  ShopingApp.Models.ActivityViewModel
+
+
+<link href="~/Content/app.css" rel="stylesheet" />
+
+<div class="bt-holder" style="margin-bottom:20px;">
+    <div class="bt-create fa fa-plus" id="btn" onclick="add();"><span>Skape aktivitet</span></div>
+</div>
+<div id="calender" class="calender"></div>
+<div class="activity-holder">
+    <div class="activity-box">
+        @using (Html.BeginForm("Index", "Activites", new { id = "form" }))
+        {
+            <div class="title"><span>Skape aktivitet</span></div>
+            <div class="activity-content">
+                <div class="items">
+                    <div class="item">
+                        <div class="item-title"><span>Navn</span></div>
+                        <div class="item-input">
+                            @Html.HiddenFor(m => m.Activity.ID, new { @id = "ID" })
+                            @Html.TextBoxFor(m => m.Activity.Name, new { @class = "text-field", @id = "Name", rows = "4", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Activity.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-title"><span>Beskrivelse</span></div>
+                        <div class="item-input">
+                            @Html.TextBoxFor(m => m.Activity.Desscription, new { @class = "text-field", @id = "Desscription", required = "required" })
+                            @Html.ValidationMessageFor(m => m.Activity.Desscription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*<div class="item">
+                        <div class="item-title">
+                            <span>tilldelat</span>
+                        </div>
+                        <div class="item-input">
+                            @Html.DropDownListFor(m => m.Activity.SID, new SelectList(Model.staffList, "Id", "first_name"),
+                                "-- Velg bruker --", new { @class = "dropdown basic", @id = "SID" })
+                            @Html.ValidationMessageFor(m => m.Activity.SID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                    <div class="item">
+                        <div class="item-title">
+                            <span>Type</span>
+                        </div>
+                        <div class="item-input">
+                            @Html.DropDownListFor(x => x.Activity.Type, new List<SelectListItem>
+                            {
+                                new SelectListItem() {Text = "kirke", Value = "1"},
+                                new SelectListItem() {Text = "barehenting", Value = "2"}
+                            }, "-- Velg type --", new { @class = "dropdown basic", @id = "Type" })
+                           
+                        </div>
+                    </div>
+                    <div class="item">
+                        @*<div class="item-title">
+                            <span>Order Number</span>
+                        </div>*@
+                        <div class="item-input">
+                            @*@Html.DropDownListFor(m => m.Activity.order_number, new SelectList(Model.DeceasedCustomersList, "order_number", "first_name"),
+                                "-- Velg bruker --", new { @class = "dropdown basic", @id = "order_number" })*@
+
+                            @*<select id="order_number" name="Activity.order_number" class="dropdown basic">
+                                <option selected disabled>-- Velg Order --</option>
+                                @foreach (var item in Model.DeceasedCustomersList)
+                                {
+                                    <option value="@(item.order_number)">@(item.order_number) - @(item.first_name) @(item.last_name)</option>
+                                }
+                            </select>*@
+                          
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-title">
+                            <span>Startdato</span>
+                        </div>
+                        <div class="item-input">
+                            <div class="datepicker">
+                                @Html.TextBoxFor(m => m.Activity.StartDate, new { @class = "text-field", @id = "StartDate", required = "required" })
+                                @Html.ValidationMessageFor(m => m.Activity.StartDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="item-title">
+                            <span>sluttdato</span>
+                        </div>
+                        <div class="item-input">
+                            <div class="datepicker">
+                                @Html.TextBoxFor(m => m.Activity.EndDate, new { @class = "text-field", @id = "EndDate", required = "required" })
+                                @Html.ValidationMessageFor(m => m.Activity.EndDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+            </div>
+            <div class="activtiy-bottom">
+                <div class="bt-holder">
+                    <button style="display: none;" type="submit" id="check" class="bt basic small">
+                        Spare
+                    </button>
+                    <a class="bt basic small" id="order"><span>Open order</span></a>
+                    <a class="bt basic small fa fa-pencil" id="aEdit" onclick="editdata()"><span>Edit Activity</span></a>
+                    <span class="close-activity" onclick="showreverse()">Avbryte</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section scripts
+{
+
+    <script type="text/javascript">
+        $("#StartDate").val("2016-06-01");
+        $("#EndDate").val("2016-06-01");
+    </script>
+
+    <script src="~/Scripts/TextBoxMappingAndCustomiztion.js"></script>
+
+}

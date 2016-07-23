@@ -8,16 +8,16 @@ namespace ShopingApp.Controllers
     public class BrowseController : Controller
     {
         // GET: Browse
-        ShopingContext db = new ShopingContext();
+        readonly ShopingContext _db = new ShopingContext();
         
         
         public ActionResult Index()
         {
             
 
-            var list = db.Products
+            var list = _db.Products
                             .OrderByDescending(x => x.ProductRank)
-                            .Take(6)
+                            .Take(8)
                             .ToList();
 
 
@@ -26,7 +26,7 @@ namespace ShopingApp.Controllers
 
         public ActionResult TopCategories()
         {
-            var list = db.Categories
+            var list = _db.Categories
                 .Where(x => x.Products.Any())
                 .OrderByDescending(x => x.CategoryRank)
                 //.Take(2)
@@ -34,7 +34,7 @@ namespace ShopingApp.Controllers
 
             foreach (var category in list)
             {
-                category.Products = db.Products
+                category.Products = _db.Products
                                     .Where(x => x.CategoryId == category.Id)
                                     .OrderByDescending(x => x.ProductRank)
                                     .Take(2)
@@ -50,7 +50,7 @@ namespace ShopingApp.Controllers
         {
             System.Threading.Thread.Sleep(1500);
 
-            var result = db.Products
+            var result = _db.Products
             .Where(x => x.ProductName.Contains(name)
             || x.Category.CategoryName.Contains(name)).ToList();
 
@@ -67,19 +67,19 @@ namespace ShopingApp.Controllers
         public ActionResult ByCategory(int? id)
         {
             System.Threading.Thread.Sleep(1500);
-            var list = db.Products.Where(x => x.CategoryId == id).ToList();
+            var list = _db.Products.Where(x => x.CategoryId == id).ToList();
 
             return PartialView(list);
          }
 
         public ActionResult Feature(int? id)
         {
-            var list = db.Features.Where(x => x.ProductId == id).ToList();
+            var list = _db.Features.Where(x => x.ProductId == id).ToList();
             return View(list);
         }
         public ActionResult Categories()
         {
-            var list = db.Categories.ToList();
+            var list = _db.Categories.ToList();
             return PartialView(list);
         }
 
@@ -97,7 +97,7 @@ namespace ShopingApp.Controllers
         {
             Cart cart = Cart.GetCartObject(Session);
 
-            Product product = db.Products.Find(id);
+            Product product = _db.Products.Find(id);
             if (product != null)
             {
                 cart.AddProduct(product);
@@ -139,8 +139,8 @@ namespace ShopingApp.Controllers
             order.UserName = User.Identity.Name;
             order.OrderDetails = cart.OrderDetails;
 
-            db.Orders.Add(order);
-            db.SaveChanges();
+            _db.Orders.Add(order);
+            _db.SaveChanges();
 
             cart.OrderDetails.Clear();
 
@@ -153,7 +153,7 @@ namespace ShopingApp.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

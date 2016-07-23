@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Shoping Site</title>
+    <title>ShopMe.pk</title>
 
     <link href="~/Content/toastr.min.css" rel="stylesheet" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MyShoppingApp", "Index", "Browse", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("ShopMe.pk", "Index", "Browse", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,7 +62,11 @@
                             </ul>
                         </li>
                     }
+
+                
                 </ul>
+
+
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -91,27 +95,29 @@
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
-    <br /><br /><br /><br /><br />
-    @* my navbar ends *@
+    <br /><br /><br />
+@* my navbar ends *@
+<img src="~/images/Shopping.png" height="150" width="150" style="margin-left: 575px;">
+
+    <br /><br />
     <div class="container">
-
-
         <div class="row">
-            <div class="col-md-3">
+            <div>
 
-                <h5>@{ Html.RenderAction("Categories", "Browse"); }</h5>
+                <span>@{ Html.RenderAction("Categories", "Browse"); }</span><hr/>
+                <br/>
 
-                <img class="wobble" src="~/images/24.jpg" width="250" /><hr />
-                <img class="wobble" src="~/images/21.jpg" width="250" />
+                @*<img class="wobble" src="~/images/24.jpg" width="250" /><hr />
+                <img class="wobble" src="~/images/21.jpg" width="250" />*@
             </div>
             <div class="loadajax" id="main" style="background-color:white; display:none;color:purple;"></div>
-            <div class="col-md-9 " id="updateArea">
+            <div class="col-md-12 " id="updateArea">
                 @RenderBody()
             </div>
         </div>
 
     </div>
-    <br />
+    <br /><br /><br /><br />
     <div class="panel-footer">
 
         <p>&copy; AbdullahSohailYaqoob | Privacy | Terms</p>
@@ -122,6 +128,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/search.js"></script>
+    <script src="~/Scripts/calender.js"></script>
+<script src="~/Scripts/ui.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript">
